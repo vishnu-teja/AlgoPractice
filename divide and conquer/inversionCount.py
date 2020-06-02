@@ -7,11 +7,13 @@ def mergeArrays(a, f, m, l):
     la = a[m: l]
     i = j = 0
     for k in range(f, l):
+
         if i< len(fa) and (j == len(la) or (fa[i]) < (la[j])):
             a[k] = fa[i]
+
             i+=1
         elif j< len(la) and (i == len(fa) or (fa[i]) > (la[j])):
-            count +=1
+            count += len(fa)-i
             a[k] = la[j]
             j+=1
         
@@ -34,9 +36,12 @@ values = myfile.split('\r\n')
 values = values[:-1]
 values = [int(i) for i in values]
 
-count = 0
+#values = [1,2,3,4,5,6,7,9,8]
 
+count = 0
+print(values)
 
 mergeSort(values, 0, len(values))
 
 print(count)
+
