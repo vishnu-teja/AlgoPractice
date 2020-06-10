@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jun 10 08:38:50 2020
-
-@author: Vishnu
-"""
-
 
 def swapValues(arr, i, j):
     t = arr[i]
@@ -39,11 +32,10 @@ def randomizedSelection(array, startIndex, endIndex):
         return randomizedSelection(array, pivot + 1, endIndex)
 
 
-array = [8, 4, 33, 2, 55, 1, 77, 21, 65, 10]
+array = [8, 4, 33, 2, 55, 1, 77, 21, 65, 10, 34, 54, 22, 76, 12, 44, 11, 13]
+print(sorted(array))
+ithOrderIndex = None
 
-
-ithOrderIndex = 2
-
-for i in range(10):
+for i in range(len(array)):
     ithOrderIndex = i
     print(randomizedSelection(array, 0, len(array)-1))
