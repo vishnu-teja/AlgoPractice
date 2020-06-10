@@ -32,10 +32,14 @@ def randomizedSelection(array, startIndex, endIndex):
         return randomizedSelection(array, pivot + 1, endIndex)
 
 
-array = [8, 4, 33, 2, 55, 1, 77, 21, 65, 10, 34, 54, 22, 76, 12, 44, 11, 13]
-print(sorted(array))
-ithOrderIndex = None
+file = open('../data/unsorted.txt', 'r')
+array = list(map(int, file.readlines()))
 
-for i in range(len(array)):
-    ithOrderIndex = i
-    print(randomizedSelection(array, 0, len(array)-1))
+file.close()
+
+ithOrderIndex = 264
+
+print(randomizedSelection(array, 0, len(array)-1))
+
+    
+    

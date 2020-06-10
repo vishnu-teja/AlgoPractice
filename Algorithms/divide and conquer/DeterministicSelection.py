@@ -54,11 +54,11 @@ def deterministicSelection(array, startIndex, endIndex):
 
 
 
-array = [8, 4, 33, 2, 55, 1, 77, 21, 65, 10, 34, 54, 22, 76, 12, 44, 11, 13]
-print(sorted(array))
+file = open('../data/unsorted.txt', 'r')
+array = list(map(int, file.readlines()))
 
-ithOrderIndex = None
+file.close()
 
-for i in range(len(array)):
-  ithOrderIndex =  i
-  print(deterministicSelection(array, 0, len(array)-1))
+ithOrderIndex = 264
+
+print(deterministicSelection(array, 0, len(array)-1))
