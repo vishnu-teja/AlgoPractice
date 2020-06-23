@@ -1,21 +1,18 @@
+# breaking an array into 2 parts and merging them back in order.
+
 
 def mergeArrays(array, startIndex, mid, endIndex):
     leftArray = array[startIndex: mid]
     rightArray = array[mid: endIndex]
-    i = startIndex
     li = ri = 0
-    while li < len(leftArray) and ri < len(rightArray):
-        if (leftArray[li] <= rightArray[ri]):
+    for i in range(startIndex, endIndex):
+        if (li < len(leftArray) and (ri >= len(rightArray) or leftArray[li] <= rightArray[ri])):
             array[i] = leftArray[li]
             li += 1
-        else:
+        elif (ri < len(rightArray) and (li >= len(leftArray) or leftArray[li] > rightArray[ri])):
             array[i] = rightArray[ri]
             ri += 1
         i += 1
-    if li < len(leftArray):
-        array[i: endIndex] = leftArray[li:]
-    if ri < len(rightArray):
-        array[i: endIndex] = rightArray[ri:]
 
 
 def mergeSort(array, startIndex, endIndex):

@@ -3,20 +3,19 @@ import urllib
 
 def mergeArrays(a, f, m, l):
     global count
-    fa = a[f: m ]
+    fa = a[f: m]
     la = a[m: l]
     i = j = 0
     for k in range(f, l):
 
-        if i< len(fa) and (j == len(la) or (fa[i]) < (la[j])):
+        if i < len(fa) and (j == len(la) or (fa[i]) < (la[j])):
             a[k] = fa[i]
 
-            i+=1
-        elif j< len(la) and (i == len(fa) or (fa[i]) > (la[j])):
+            i += 1
+        elif j < len(la) and (i == len(fa) or (fa[i]) > (la[j])):
             count += len(fa)-i
             a[k] = la[j]
-            j+=1
-        
+            j += 1
 
 
 def mergeSort(a, f, l):
@@ -25,23 +24,16 @@ def mergeSort(a, f, l):
         mergeSort(a, f, m)
         mergeSort(a, m, l)
         mergeArrays(a, f, m, l)
-        
 
 
-link = "https://d3c33hcgiwev3.cloudfront.net/_bcb5c6658381416d19b01bfc1d3993b5_IntegerArray.txt?Expires=1591056000&Signature=LPJUeI3nyYAsdE0oNC1xi-7~zTXI78VPIpgPzHCHVp7Dmo4doFUSRXgyqkzya2CB9FPbJEDIA767uA0B~vDW1lYxZ4ql83qe26c8-a3qSWNL7WAPidXAYURyQxxTQTZgs06XbkM31MQfyhG1Ea~t~ji2SXkhZ-n9SQk6qkI83ro_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A"
-f = urllib.urlopen(link)
-myfile = str(f.read())
+file = open('../data/unsorted.txt', 'r')
+array = list(map(int, file.readlines()))
+file.close()
 
-values = myfile.split('\r\n')
-values = values[:-1]
-values = [int(i) for i in values]
-
-#values = [1,2,3,4,5,6,7,9,8]
 
 count = 0
-print(values)
+print(array)
 
-mergeSort(values, 0, len(values))
+mergeSort(array, 0, len(array))
 
 print(count)
-
