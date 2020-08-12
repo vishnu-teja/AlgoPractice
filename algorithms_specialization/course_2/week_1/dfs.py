@@ -39,6 +39,8 @@ class Graph:
     def get_leaders(self):
         return self.leaders
 
+
+# TODO: correct this method
 # def dfs_loop(vertices, edgeType):
 #     global graph
 #     for vertex in vertices:
