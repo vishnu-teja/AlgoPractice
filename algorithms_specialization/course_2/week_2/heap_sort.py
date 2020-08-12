@@ -1,6 +1,4 @@
 
-# this code will generate a min arr.
-
 
 class Heap:
     def __init__(self, arr):
@@ -48,16 +46,18 @@ class Heap:
         return val
 
 
+def heap_sort(arr, heap):
+    val = heap.pop_from_heap()
+    if val != None:
+        arr.append(val)
+        heap_sort(arr, heap)
+
+
 arr = [5, 60, 25, 11, 42, 99, 61, 13, 54, 71,
        17, 23, 39, 18, 22, 12, 43, 15, 8, 3]
-
 print(arr)
-arr = Heap(arr)
-print(arr.get_heap())
-
-arr.add_to_heap(1)
-print(arr.get_heap())
-
-
-arr.pop_from_heap()
-print(arr.get_heap())
+heap = Heap(arr)
+print(heap.get_heap())
+sorted_arr = []
+heap_sort(sorted_arr, heap)
+print(sorted_arr)
