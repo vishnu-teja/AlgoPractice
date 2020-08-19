@@ -1,5 +1,5 @@
-import sys
-sys.setrecursionlimit(10000)
+# import sys
+# sys.setrecursionlimit(10000)
 
 
 class Graph:
@@ -15,14 +15,14 @@ class Graph:
         return self.vertices[vertex][edgeType]
 
     def set_explored(self, vertex):
-        self.vertices[vertex]['explored'] = True
+        self.vertices[vertex]["explored"] = True
 
     def is_explored(self, vertex):
-        return self.vertices[vertex]['explored'] == True
+        return self.vertices[vertex]["explored"] == True
 
     def reset_explored(self):
         for vertex in self.vertices:
-            self.vertices[vertex]['explored'] = False
+            self.vertices[vertex]["explored"] = False
 
     def set_position(self, vertex, position):
         self.positions[str(position)] = vertex
@@ -81,14 +81,14 @@ def dfs_loop(vertices, edgeType):
             if not graph.is_explored(v):
                 graph.set_explored(v)
                 vertices_stack.append(v)
-                if edgeType == 'edges':
+                if edgeType == "edges":
                     graph.set_leader(v, leader)
                 edges = graph.get_edges(v, edgeType)
                 for edge in edges:
                     if not graph.is_explored(edge):
                         vertices_stack.append(edge)
             else:
-                if edgeType == 'reverseEdges':
+                if edgeType == "reverseEdges":
                     position += 1
                     graph.set_position(v, position)
 
@@ -97,21 +97,18 @@ vertices = {}
 position = 0
 leader = None
 
-# file = open("./course_2/week_1/graph_dummy.txt", 'r')
-file = open("./course_2/week_1/directed_graph.txt", 'r')
+file = open("./course_2/week_1/directed_graph.txt", "r")
 
 for line in file:
     key, value = line.split()
     if key not in vertices:
-        vertices[key] = {'explored': False,
-                         'edges': [value], 'reverseEdges': []}
+        vertices[key] = {"explored": False, "edges": [value], "reverseEdges": []}
     else:
-        vertices[key]['edges'].append(value)
+        vertices[key]["edges"].append(value)
     if value not in vertices:
-        vertices[value] = {'explored': False,
-                           'edges': [], 'reverseEdges': [key]}
+        vertices[value] = {"explored": False, "edges": [], "reverseEdges": [key]}
     else:
-        vertices[value]['reverseEdges'].append(key)
+        vertices[value]["reverseEdges"].append(key)
 file.close()
 
 
@@ -123,16 +120,15 @@ graph = Graph(vertices)
 # step 4: create leaders dictionary
 # step 5: return top 5
 
-dfs_loop(graph.get_vertices(), 'reverseEdges')
+dfs_loop(graph.get_vertices(), "reverseEdges")
 
 graph.reset_explored()
 
 positioned_vertices = graph.get_vertices_by_position()
 
 
-dfs_loop(positioned_vertices, 'edges')
+dfs_loop(positioned_vertices, "edges")
 
 # Each leader is a strongly connected node network
-leads = sorted(
-    list(map(lambda x: len(x), graph.get_leaders().values())), reverse=True)
-print(leads[: 5])
+leads = sorted(list(map(lambda x: len(x), graph.get_leaders().values())), reverse=True)
+print(leads[:5])

@@ -52,12 +52,20 @@ arr = [5, 60, 25, 11, 42, 99, 61, 13, 54, 71,
        17, 23, 39, 18, 22, 12, 43, 15, 8, 3]
 
 print(arr)
-arr = Heap(arr)
-print(arr.get_heap())
+# arr = Heap(arr)
+# print(arr.get_heap())
 
-arr.add_to_heap(1)
-print(arr.get_heap())
+# arr.add_to_heap(1)
+# print(arr.get_heap())
 
 
-arr.pop_from_heap()
-print(arr.get_heap())
+# arr.pop_from_heap()
+# print(arr.get_heap())
+
+import heapq
+newa = []
+heapq.heapify(newa)
+for i in arr:
+    k = -i
+    heapq.heappush(newa, -1 * k)
+print(newa)
